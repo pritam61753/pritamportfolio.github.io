@@ -174,6 +174,16 @@ body {
     animation: fadeInUp 0.8s ease 0.4s both;
 }
 
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    
+    object-fit: cover;
+    animation: fadeInDown 0.8s ease;
+}
+
 .hero-buttons {
     display: flex;
     gap: 20px;
@@ -568,6 +578,15 @@ body {
     margin-bottom: 10px;
 }
 
+.interest-item .hobby-icon {
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* ============================================
    CONTACT SECTION
    ============================================ */
@@ -847,6 +866,12 @@ body {
 
     .hero-description {
         font-size: 16px;
+    }
+
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 15px;
     }
 
     .hero-buttons {
