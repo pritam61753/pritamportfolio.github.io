@@ -121,7 +121,10 @@ body {
 .hero {
     margin-top: 70px;
     min-height: calc(100vh - 70px);
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 50%, #00334d 100%);
+    background-image: url('hero-bg.jpg'), linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 50%, #00334d 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     display: flex;
     align-items: center;
@@ -138,8 +141,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1" opacity="0.1"/></pattern></defs><rect width="1200" height="600" fill="none"/><rect width="1200" height="600" fill="url(%23grid)" /></svg>');
-    opacity: 0.1;
+    background: rgba(0, 0, 0, 0.35);
+    mix-blend-mode: multiply;
+    opacity: 0.9;
 }
 
 .hero-content,
@@ -337,7 +341,7 @@ body {
 
 .skills {
     padding: 80px 20px;
-    background-color: white;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
 }
 
 .skills-grid {
@@ -347,45 +351,93 @@ body {
 }
 
 .skill-category {
-    background: var(--secondary-color);
-    padding: 25px;
-    border-radius: 8px;
-    transition: var(--transition);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 255, 0.9) 100%);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(51, 153, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 20px rgba(51, 153, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(51, 153, 255, 0.1) 0%, transparent 70%);
+    transition: all 0.4s ease;
+    pointer-events: none;
 }
 
 .skill-category:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(51, 153, 255, 0.2);
+    border-color: rgba(51, 153, 255, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(235, 245, 255, 0.95) 100%);
+}
+
+.skill-category:hover::before {
+    top: -25%;
+    right: -25%;
 }
 
 .skill-category h3 {
     color: var(--primary-color);
     margin-bottom: 20px;
     font-size: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    position: relative;
+    z-index: 1;
 }
 
 .skill-tag {
-    background: white;
-    color: var(--primary-color);
-    padding: 8px 16px;
-    border-radius: 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0052a3 100%);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
     font-size: 13px;
     font-weight: 600;
-    border: 1px solid var(--primary-color);
-    transition: var(--transition);
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(51, 153, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+    z-index: 0;
 }
 
 .skill-tag:hover {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, #66ccff 0%, var(--primary-color) 100%);
     color: white;
-    transform: scale(1.05);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 30px rgba(51, 153, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.skill-tag:hover::before {
+    left: 100%;
 }
 
 /* ============================================
@@ -904,6 +956,15 @@ body {
 
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .skill-category {
+        padding: 20px;
+    }
+
+    .skill-tag {
+        padding: 8px 14px;
+        font-size: 12px;
     }
 
     .stat-card {
